@@ -14,15 +14,246 @@
             background-color: #fff;
             color: #424242;
             line-height: 1.5;
+            text-align: center;
         }
+        input {
+            width: 150px;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 25px;
+        }
+        h3 {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        p {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        ul {
+            padding-left: 0;
+        }
+        li {
+            list-style: none;
+            padding-inline-start: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .inputs {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-left: 0;
+            margin: 10px;
+        }
+        .js-res-value {
+            display: inline-block;
+            width: 70px;
+            border: 1px solid grey;
+        }
+        .first-line, .second-line, .third-line {
+            display: flex;
+            flex-direction: row;
+        } 
+        .first-line {
+            justify-content: center;
+        }
+        .second-line {
+            justify-content: center;
+            padding-left: 135px;
+        }
+        .third-line {
+            justify-content: center;
+            padding-right: 270px;
+        }
+        div > li {
+            margin-bottom: 10px;
+        }
+        /* li > ul {
+            display: flex;
+        } */
     </style>
 </head>
 
 <body>
-    <ul>
-        <li><a href="osmos1.html">Розрахунок одноступінчатої зворотноосматичної установки</a></li>
-        <li><a href="osmos2.html">Розрахунок двоступінчатої зворотноосматичної установки</a></li>
-    </ul>
+    <h1>Розрахунок одно- та двоступінчатої зворотноосматичної установки</h1>
+    <h2>Введення вихідних даних</h2>
+    <ul class="inputs">
+        <li><input type="number" placeholder="Введіть значення Ci" id="Ci"/></li>
+        <li><input type="number" placeholder="Введіть значення Gv" id="Gv"/></li>
+        <li><input type="number" placeholder="Введіть значення Xz" id="Xz"/></li>
+        <li><input type="number" placeholder="Введіть значення Xp" id="Xp"/></li>
+        <li><input type="number" placeholder="Введіть значення Xr" id="Xr"/></li>
+    </ul> 
+
+    <h2>Розрахунок одноступінчатої зворотноосматичної установки</h2>
+    <div class="controls">        
+        <button type="button" data-action="render">Виконати розрахунок</button>
+        <button type="button" data-action="destroy">Очистити поля</button>
+    </div>
+    
+    <div class="results">
+        <ul class="resulted-boxes">
+            <div class="first-line">
+            <li> <h3>Змішувач</h3>
+                <ul class="blender">
+                    <li>
+                        <p>Gi <span class="js-res-value" id="Gi">000.000</span></p>                         
+                    </li>
+                    <li>
+                        <p>Cv <span class="js-res-value" id="Cv">000.000</span></p>                         
+                    </li>
+                </ul> 
+            </li>
+
+            <li>
+                <h3>Мембрана</h3>
+                <ul class="membrane">
+                    <li>
+                        <p>Gp <span class="js-res-value" id="Gp">000.000</span></p>
+                    </li>
+                    <li>
+                        <p>Cp <span class="js-res-value" id="Cp">000.000</span></p>                        
+                    </li>
+                    <li>
+                        <p>Gk <span class="js-res-value" id="Gk">000.000</span></p>                        
+                    </li>
+                    <li>
+                        <p>Ck <span class="js-res-value" id="Ck">000.000</span></p>                        
+                    </li>
+                </ul> 
+            </li>
+        </div>
+        
+        <div class="second-line">
+            <li>
+                <h3>Розділювач</h3>
+                <ul class="separator">
+                    <li> 
+                        <p>Gr <span class="js-res-value" id="">000.000</span></p>
+                    </li>
+                    <li>
+                        <p>Gs <span class="js-res-value" id="">000.000</span></p>                         
+                    </li>
+                </ul> 
+            </li>
+        </div>
+        </ul>
+
+    </div>
+
+    <h2>Розрахунок двоступінчатої зворотноосматичної установки</h2>
+    
+    <div class="controls">        
+        <button type="button" data-action="render">Виконати розрахунок</button>
+        <button type="button" data-action="destroy">Очистити поля</button>
+    </div>
+    
+    <div class="results">
+        <ul class="resulted-boxes">
+        <div class="first-line">
+            <li>
+                <h3>Змішувач</h3>
+                <ul class="blender">
+                    <li>
+                        <p>Gi <span class="js-res-value" id="Gi">000.000</span></p>                         
+                    </li>
+                    <li>
+                        <p>Cv <span class="js-res-value" id="Cv">000.000</span></p>                         
+                    </li>
+                </ul> 
+            </li>
+
+            <li>
+                <h3>Мембрана</h3>
+                <ul class="membrane">
+                    <li>
+                        <p>Gp <span class="js-res-value" id="Gp">000.000</span></p>
+                    </li>
+                    <li>
+                        <p>Cp<span class="js-res-value" id="Cp">000.000</span></p>                        
+                    </li>
+                    <li>
+                        <p>Gk<span class="js-res-value" id="Gk">000.000</span></p>                        
+                    </li>
+                    <li>
+                        <p>Ck <span class="js-res-value" id="Ck">000.000</span></p>                        
+                    </li>
+                </ul> 
+            </li>
+
+            <li>
+                <h3>Мембрана-2</h3>
+                <ul class="membrane">
+                    <li>
+                        <p>Gp2 <span class="js-res-value" id="Gp2">000.000</span></p>
+                    </li>
+                    <li>
+                        <p>Cp2 <span class="js-res-value" id="Cp2">000.000</span></p>                        
+                    </li>
+                    <li>
+                        <p>Gk2 <span class="js-res-value" id="Gk2">000.000</span></p>                        
+                    </li>
+                    <li>
+                        <p>Ck2 <span class="js-res-value" id="Ck2">000.000</span></p>                        
+                    </li>
+                </ul> 
+            </li>
+        </div>
+
+        <div class="second-line">
+            <li>
+                <h3>Розділювач</h3>
+                <ul class="separator">
+                    <li> 
+                        <p>Gr <span class="js-res-value" id="Gr">000.000</span></p>
+                    </li>
+                    <li>
+                         <p>Gs <span class="js-res-value" id="Gs">000.000</span></p>                         
+                    </li>
+                </ul> 
+            </li>
+
+            <li>
+                <h3>Розділювач-2</h3>
+                <ul class="separator">
+                    <li> 
+                        <p>Gr2 <span class="js-res-value" id="Gr2">000.000</span></p>
+                    </li>
+                    <li>
+                         <p>Gs2 <span class="js-res-value" id="Gs2">000.000</span></p>                         
+                    </li>
+                </ul> 
+            </li>
+        </div>
+
+        <div class="third-line">
+            <li>
+                <h3>Змішувач-2</h3>
+                <ul class="blender">
+                    <li>
+                        <p>Gi2 <span class="js-res-value" id="Gi2">000.000</span></p>                         
+                    </li>
+                    <li>
+                        <p>Cv2 <span class="js-res-value" id="Cv2">000.000</span></p>                         
+                    </li>
+                </ul> 
+            </li>
+        </div>
+        </ul>
+
+    </div>
+    <script src="js/osmos1.js" type="module"></script>
+    <script src="js/osmos2.js" type="module"></script>
+
 </body>
 
 </html>
