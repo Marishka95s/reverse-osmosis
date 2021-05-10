@@ -56,7 +56,7 @@
         }
         .js-res-value {
             display: inline-block;
-            width: 70px;
+            min-width: 160px;
             border: 1px solid grey;
         }
         .first-line, .second-line, .third-line {
@@ -68,11 +68,11 @@
         }
         .second-line {
             justify-content: center;
-            padding-left: 135px;
+            padding-left: 225px;
         }
         .third-line {
             justify-content: center;
-            padding-right: 270px;
+            padding-right: 475px;
         }
         div > li {
             margin-bottom: 10px;
@@ -85,174 +85,183 @@
 
 <body>
     <h1>Розрахунок одно- та двоступінчатої зворотноосматичної установки</h1>
-    <h2>Введення вихідних даних</h2>
-    <ul class="inputs">
-        <li><input type="number" placeholder="Введіть значення Ci" id="Ci"/></li>
-        <li><input type="number" placeholder="Введіть значення Gv" id="Gv"/></li>
-        <li><input type="number" placeholder="Введіть значення Xz" id="Xz"/></li>
-        <li><input type="number" placeholder="Введіть значення Xp" id="Xp"/></li>
-        <li><input type="number" placeholder="Введіть значення Xr" id="Xr"/></li>
-    </ul> 
 
-    <h2>Розрахунок одноступінчатої зворотноосматичної установки</h2>
-    <div class="controls">        
-        <button type="button" data-action="render">Виконати розрахунок</button>
-        <button type="button" data-action="destroy">Очистити поля</button>
-    </div>
-    
-    <div class="results">
-        <ul class="resulted-boxes">
-            <div class="first-line">
-            <li> <h3>Змішувач</h3>
-                <ul class="blender">
-                    <li>
-                        <p>Gi <span class="js-res-value" id="Gi">000.000</span></p>                         
-                    </li>
-                    <li>
-                        <p>Cv <span class="js-res-value" id="Cv">000.000</span></p>                         
-                    </li>
-                </ul> 
-            </li>
+    <!-- Блок введення даних -->
+    <section>
+        <h2>Введення вихідних даних</h2>
+        <ul class="inputs">
+            <li><input type="number" placeholder="Введіть значення Ci" id="ci"/></li>
+            <li><input type="number" placeholder="Введіть значення Gv" id="gv"/></li>
+            <li><input type="number" placeholder="Введіть значення Xz" id="xz"/></li>
+            <li><input type="number" placeholder="Введіть значення Xp" id="xp"/></li>
+            <li><input type="number" placeholder="Введіть значення Xr" id="xr"/></li>
+            <li><input type="number" placeholder="Введіть значення Xr2" id="xr2"/></li>
+        </ul> 
+    </section>
 
-            <li>
-                <h3>Мембрана</h3>
-                <ul class="membrane">
-                    <li>
-                        <p>Gp <span class="js-res-value" id="Gp">000.000</span></p>
-                    </li>
-                    <li>
-                        <p>Cp <span class="js-res-value" id="Cp">000.000</span></p>                        
-                    </li>
-                    <li>
-                        <p>Gk <span class="js-res-value" id="Gk">000.000</span></p>                        
-                    </li>
-                    <li>
-                        <p>Ck <span class="js-res-value" id="Ck">000.000</span></p>                        
-                    </li>
-                </ul> 
-            </li>
-        </div>
+    <!-- Кнопки запуску розрахунків і очищення даних -->
+    <section class="controls">        
+        <button type="button" class="calculate-one-step">Виконати розрахунок одноступінчатої установки</button>
+        <button type="button" class="calculate-two-step">Виконати розрахунок двоступінчатої установки</button>
+        <button type="button" class="remove-data">Очистити поля</button>
+    </section>
+
+    <!-- Розрахунок одноступінчатої зворотноосматичної установки -->
+    <section>
+        <h2>Розрахунок одноступінчатої зворотноосматичної установки</h2>
         
-        <div class="second-line">
-            <li>
-                <h3>Розділювач</h3>
-                <ul class="separator">
-                    <li> 
-                        <p>Gr <span class="js-res-value" id="">000.000</span></p>
-                    </li>
-                    <li>
-                        <p>Gs <span class="js-res-value" id="">000.000</span></p>                         
-                    </li>
-                </ul> 
-            </li>
+        <div class="one-stage-results">
+            <ul class="resulted-boxes">
+                <div class="first-line">
+                <li> <h3>Змішувач</h3>
+                    <ul class="blender">
+                        <li>
+                            <p>Gi <span class="js-res-value" id="gi-1">000.000</span></p>                         
+                        </li>
+                        <li>
+                            <p>Cv <span class="js-res-value" id="cv-1">000.000</span></p>                         
+                        </li>
+                    </ul> 
+                </li>
+
+                <li>
+                    <h3>Мембрана</h3>
+                    <ul class="membrane">
+                        <li>
+                            <p>Gp <span class="js-res-value" id="gp-1">000.000</span></p>
+                        </li>
+                        <li>
+                            <p>Cp <span class="js-res-value" id="cp-1">000.000</span></p>                        
+                        </li>
+                        <li>
+                            <p>Gk <span class="js-res-value" id="gk-1">000.000</span></p>                        
+                        </li>
+                        <li>
+                            <p>Ck <span class="js-res-value" id="ck-1">000.000</span></p>                        
+                        </li>
+                    </ul> 
+                </li>
+            </div>
+            
+            <div class="second-line">
+                <li>
+                    <h3>Розділювач</h3>
+                    <ul class="separator">
+                        <li> 
+                            <p>Gr <span class="js-res-value" id="gr-1">000.000</span></p>
+                        </li>
+                        <li>
+                            <p>Gs <span class="js-res-value" id="gs-1">000.000</span></p>                         
+                        </li>
+                    </ul> 
+                </li>
+            </div>
+            </ul>
+
         </div>
-        </ul>
+    </section>
 
-    </div>
+    <!-- Розрахунок двоступінчатої зворотноосматичної установки -->
+    <section>
+        <h2>Розрахунок двоступінчатої зворотноосматичної установки</h2>
+        
+        <div class="two-stage-results">
+            <ul class="resulted-boxes">
+            <div class="first-line">
+                <li>
+                    <h3>Змішувач</h3>
+                    <ul class="blender">
+                        <li>
+                            <p>Gi <span class="js-res-value" id="gi-2">000.000</span></p>                         
+                        </li>
+                        <li>
+                            <p>Cv <span class="js-res-value" id="cv-2">000.000</span></p>                         
+                        </li>
+                    </ul> 
+                </li>
 
-    <h2>Розрахунок двоступінчатої зворотноосматичної установки</h2>
-    
-    <div class="controls">        
-        <button type="button" data-action="render">Виконати розрахунок</button>
-        <button type="button" data-action="destroy">Очистити поля</button>
-    </div>
-    
-    <div class="results">
-        <ul class="resulted-boxes">
-        <div class="first-line">
-            <li>
-                <h3>Змішувач</h3>
-                <ul class="blender">
-                    <li>
-                        <p>Gi <span class="js-res-value" id="Gi">000.000</span></p>                         
-                    </li>
-                    <li>
-                        <p>Cv <span class="js-res-value" id="Cv">000.000</span></p>                         
-                    </li>
-                </ul> 
-            </li>
+                <li>
+                    <h3>Мембрана</h3>
+                    <ul class="membrane">
+                        <li>
+                            <p>Gp <span class="js-res-value" id="gp-2">000.000</span></p>
+                        </li>
+                        <li>
+                            <p>Cp <span class="js-res-value" id="cp-2">000.000</span></p>                        
+                        </li>
+                        <li>
+                            <p>Gk <span class="js-res-value" id="gk-2">000.000</span></p>                        
+                        </li>
+                        <li>
+                            <p>Ck <span class="js-res-value" id="ck-2">000.000</span></p>                        
+                        </li>
+                    </ul> 
+                </li>
 
-            <li>
-                <h3>Мембрана</h3>
-                <ul class="membrane">
-                    <li>
-                        <p>Gp <span class="js-res-value" id="Gp">000.000</span></p>
-                    </li>
-                    <li>
-                        <p>Cp<span class="js-res-value" id="Cp">000.000</span></p>                        
-                    </li>
-                    <li>
-                        <p>Gk<span class="js-res-value" id="Gk">000.000</span></p>                        
-                    </li>
-                    <li>
-                        <p>Ck <span class="js-res-value" id="Ck">000.000</span></p>                        
-                    </li>
-                </ul> 
-            </li>
+                <li>
+                    <h3>Мембрана-2</h3>
+                    <ul class="membrane">
+                        <li>
+                            <p>Gp2 <span class="js-res-value" id="gp2-2">000.000</span></p>
+                        </li>
+                        <li>
+                            <p>Cp2 <span class="js-res-value" id="cp2-2">000.000</span></p>                        
+                        </li>
+                        <li>
+                            <p>Gk2 <span class="js-res-value" id="gk2-2">000.000</span></p>                        
+                        </li>
+                        <li>
+                            <p>Ck2 <span class="js-res-value" id="ck2-2">000.000</span></p>                        
+                        </li>
+                    </ul> 
+                </li>
+            </div>
 
-            <li>
-                <h3>Мембрана-2</h3>
-                <ul class="membrane">
-                    <li>
-                        <p>Gp2 <span class="js-res-value" id="Gp2">000.000</span></p>
-                    </li>
-                    <li>
-                        <p>Cp2 <span class="js-res-value" id="Cp2">000.000</span></p>                        
-                    </li>
-                    <li>
-                        <p>Gk2 <span class="js-res-value" id="Gk2">000.000</span></p>                        
-                    </li>
-                    <li>
-                        <p>Ck2 <span class="js-res-value" id="Ck2">000.000</span></p>                        
-                    </li>
-                </ul> 
-            </li>
+            <div class="second-line">
+                <li>
+                    <h3>Розділювач</h3>
+                    <ul class="separator">
+                        <li> 
+                            <p>Gr <span class="js-res-value" id="gr-2">000.000</span></p>
+                        </li>
+                        <li>
+                            <p>Gs <span class="js-res-value" id="gs-2">000.000</span></p>                         
+                        </li>
+                    </ul> 
+                </li>
+
+                <li>
+                    <h3>Розділювач-2</h3>
+                    <ul class="separator">
+                        <li> 
+                            <p>Gr2 <span class="js-res-value" id="gr2-2">000.000</span></p>
+                        </li>
+                        <li>
+                            <p>Gs2 <span class="js-res-value" id="gs2-2">000.000</span></p>                         
+                        </li>
+                    </ul> 
+                </li>
+            </div>
+
+            <div class="third-line">
+                <li>
+                    <h3>Змішувач-2</h3>
+                    <ul class="blender">
+                        <li>
+                            <p>Gi2 <span class="js-res-value" id="gi2-2">000.000</span></p>                         
+                        </li>
+                        <li>
+                            <p>Cv2 <span class="js-res-value" id="cv2-2">000.000</span></p>                         
+                        </li>
+                    </ul> 
+                </li>
+            </div>
+            </ul>
+
         </div>
+    </section>
 
-        <div class="second-line">
-            <li>
-                <h3>Розділювач</h3>
-                <ul class="separator">
-                    <li> 
-                        <p>Gr <span class="js-res-value" id="Gr">000.000</span></p>
-                    </li>
-                    <li>
-                         <p>Gs <span class="js-res-value" id="Gs">000.000</span></p>                         
-                    </li>
-                </ul> 
-            </li>
-
-            <li>
-                <h3>Розділювач-2</h3>
-                <ul class="separator">
-                    <li> 
-                        <p>Gr2 <span class="js-res-value" id="Gr2">000.000</span></p>
-                    </li>
-                    <li>
-                         <p>Gs2 <span class="js-res-value" id="Gs2">000.000</span></p>                         
-                    </li>
-                </ul> 
-            </li>
-        </div>
-
-        <div class="third-line">
-            <li>
-                <h3>Змішувач-2</h3>
-                <ul class="blender">
-                    <li>
-                        <p>Gi2 <span class="js-res-value" id="Gi2">000.000</span></p>                         
-                    </li>
-                    <li>
-                        <p>Cv2 <span class="js-res-value" id="Cv2">000.000</span></p>                         
-                    </li>
-                </ul> 
-            </li>
-        </div>
-        </ul>
-
-    </div>
-    <script src="js/osmos1.js" type="module"></script>
-    <script src="js/osmos2.js" type="module"></script>
+    <script src="js/index.js" type="module"></script>
 
 </body>
 
