@@ -30,6 +30,8 @@ const resSpanOneStepGk = document.querySelector('#gk-1');
 const resSpanOneStepCk = document.querySelector('#ck-1');
 const resSpanOneStepGr = document.querySelector('#gr-1');
 const resSpanOneStepGs = document.querySelector('#gs-1');
+const resSpanOneStepLp = document.querySelector('#lp1');
+const resSpanOneStepRp = document.querySelector('#rp1');
 
 // --Двоступінчата ЗОУ--
 const resSpanTwoStepGi = document.querySelector('#gi-2');
@@ -48,6 +50,8 @@ const resSpanTwoStepGr2 = document.querySelector('#gr2-2');
 const resSpanTwoStepGs2 = document.querySelector('#gs2-2');
 const resSpanTwoStepGi2 = document.querySelector('#gi2-2');
 const resSpanTwoStepCv2 = document.querySelector('#cv2-2');
+const resSpanTwoStepLp2 = document.querySelector('#lp2');
+const resSpanTwoStepRp2 = document.querySelector('#rp2');
 
 
 // 7) Оформити секції розрахунків і присвоєння значень відповідним змінним
@@ -79,18 +83,18 @@ const membr = (gv, cv, xz, xp) => {
 
 
 function onCalcBtnOneStepClick() {
-    const ci = inputCi.value; // 1500
-    const gv = inputGv.value; // 1
-    const xz = inputXz.value; // 0.99
-    const xp = inputXp.value; // 0.2
-    let xr = inputXr.value; // 0.2
+    const ci = Number(inputCi.value); // 1500
+    const gv = Number(inputGv.value); // 1
+    const xz = Number(inputXz.value); // 0.99
+    const xp = Number(inputXp.value); // 0.2
+    let xr = Number(inputXr.value); // 0.2
 
     var cv = 1.2 * ci
 
     for (let i = 0; i < 100; i++) {
-    var [gp, cp, gk, ck] = membr(gv, cv, xz, xp)
-    var [gr, gs] = rozd(gk, xr)
-    var [gi, cv] = zmish(gr, ck, ci, gv)
+        var [gp, cp, gk, ck] = membr(gv, cv, xz, xp)
+        var [gr, gs] = rozd(gk, xr)
+        var [gi, cv] = zmish(gr, ck, ci, gv)
     }
 
     let lp = gi * ci
@@ -101,59 +105,70 @@ function onCalcBtnOneStepClick() {
     console.log("Gi =", gi, "Gk =", gk, "Gp =", gp, "Gs =", gs) 
     console.log(message)
 
-    resSpanOneStepGi.textContent = gi;
-    resSpanOneStepCv.textContent = cv;
-    resSpanOneStepGp.textContent = gp;
-    resSpanOneStepCp.textContent = cp;
-    resSpanOneStepGk.textContent = gk;
-    resSpanOneStepCk.textContent = ck;
-    resSpanOneStepGr.textContent = gr;
-    resSpanOneStepGs.textContent = gs;
-
-    // const result = () => {
-    // console.log("\x1b[3;32m" + "Зворотний осмос 1:" + "\x1b[0m")
-    // console.log("Cv =", cv, "\nCp =", cp, "\nCk =", ck)
-    // console.log("Gi =", gi, "Gk =", gk, "Gp =", gp, "Gs =", gs) 
-    // console.log(message)
-    // }
-    
-    return ci, gv, xz, xp, xr, xr2;
-
+    resSpanOneStepGi.textContent = gi.toFixed(2);
+    resSpanOneStepCv.textContent = cv.toFixed(2);
+    resSpanOneStepGp.textContent = gp.toFixed(2);
+    resSpanOneStepCp.textContent = cp.toFixed(2);
+    resSpanOneStepGk.textContent = gk.toFixed(2);
+    resSpanOneStepCk.textContent = ck.toFixed(2);
+    resSpanOneStepGr.textContent = gr.toFixed(2);
+    resSpanOneStepGs.textContent = gs.toFixed(2);
+    resSpanOneStepLp.textContent = lp.toFixed(3);
+    resSpanOneStepRp.textContent = rp.toFixed(3);
 }
+
 function onCalcBtnTwoStepClick() {
     
 // 2 ступінь
-    const ci = inputCi.value; // 1500
-    const gv = inputGv.value; // 1
-    const xz = inputXz.value; // 0.99
-    const xp = inputXp.value; // 0.2
-    let xr = inputXr.value; // 0.2
-    let xr2 = inputXr2.value; // 0.25
+    const ci = Number(inputCi.value); // 1500
+    const gv = Number(inputGv.value); // 1
+    const xz = Number(inputXz.value); // 0.99
+    const xp = Number(inputXp.value); // 0.2
+    let xr = Number(inputXr.value); // 0.2
+    let xr2 = Number(inputXr2.value); // 0.25
 
-var cv1 = 1.2 * ci
+    var cv1 = 1.2 * ci
 
-// for (let i = 0; i < 100; i++) {
-//   var [gp1, cp1, gk1, ck1] = membr(gv, cv1, xz, xp)
-//   var [gr1, gs1] = rozd(gk1, xr)
-//   var [gp2, cp2, gk2, ck2] = membr(gp1, cp1, xz, xp)
-//   var [gr2, gs2] = rozd(gk2, xr2)
-//   var [gi2, cv2] = zmish2(gr1, ck1, gr2, ck2)
-//   var [gi1, cv1] = zmish(gi2, cv2, ci, gv)
-// }
+    for (let i = 0; i < 100; i++) {
+      var [gp1, cp1, gk1, ck1] = membr(gv, cv1, xz, xp)
+      var [gr1, gs1] = rozd(gk1, xr)
+      var [gp2, cp2, gk2, ck2] = membr(gp1, cp1, xz, xp)
+      var [gr2, gs2] = rozd(gk2, xr2)
+      var [gi2, cv2] = zmish2(gr1, ck1, gr2, ck2)
+      var [gi1, cv1] = zmish(gi2, cv2, ci, gv)
+    }
 
-// let lp = gi1 * ci
-// let rp = gs1 * ck1 + gs2 * ck2
-// let message = Math.round(lp - rp) === 0 ? "LP = RP" : "Something is wrong"
+    let lp = gi1 * ci
+    let rp = gs1 * ck1 + gs2 * ck2 + gp2 * cp2
+    let message1 = Math.round(lp - rp) === 0 ? "LP = RP" : "Something is wrong"
 
-// const result = () => {
-//   console.log("\x1b[3;32m" + "Зворотний осмос 2:" + "\x1b[0m")
-//   console.log("Cv1 =", cv1, "\nCp1 =", cp1, "\nCk1 =", ck1)
-//   console.log("Gi1 =", gi1, "Gk1 =", gk1, "Gp1 =", gp1, "Gs1 =", gs1)
-//   console.log("Cv2 =", cv2, "\nCp2 =", cp2, "\nCk2 =", ck2)
-//   console.log("Gi2 =", gi2, "Gk2 =", gk2, "Gp2 =", gp2, "Gs2 =", gs2)
-//   console.log(message)
-// }
+
+    console.log("Cv1 =", cv1, "\nCp1 =", cp1, "\nCk1 =", ck1)
+    console.log("Gi1 =", gi1, "Gk1 =", gk1, "Gp1 =", gp1, "Gs1 =", gs1)
+    console.log("Cv2 =", cv2, "\nCp2 =", cp2, "\nCk2 =", ck2)
+    console.log("Gi2 =", gi2, "Gk2 =", gk2, "Gp2 =", gp2, "Gs2 =", gs2)
+    console.log(message1)
+
+    resSpanTwoStepGi.textContent = gi1.toFixed(2);
+    resSpanTwoStepCv.textContent = cv1.toFixed(2);
+    resSpanTwoStepGp.textContent = gp1.toFixed(2);
+    resSpanTwoStepCp.textContent = cp1.toFixed(2);
+    resSpanTwoStepGk.textContent = gk1.toFixed(2);
+    resSpanTwoStepCk.textContent = ck1.toFixed(2);
+    resSpanTwoStepGp2.textContent = gp2.toFixed(2);
+    resSpanTwoStepCp2.textContent = cp2.toFixed(2);
+    resSpanTwoStepGk2.textContent = gk2.toFixed(2);
+    resSpanTwoStepCk2.textContent = ck2.toFixed(2);
+    resSpanTwoStepGr.textContent = gr1.toFixed(2);
+    resSpanTwoStepGs.textContent = gs1.toFixed(2);
+    resSpanTwoStepGr2.textContent = gr2.toFixed(2);
+    resSpanTwoStepGs2.textContent = gs2.toFixed(2);
+    resSpanTwoStepGi2.textContent = gi2.toFixed(2);
+    resSpanTwoStepCv2.textContent = cv2.toFixed(2);
+    resSpanTwoStepLp2.textContent = lp.toFixed(3);
+    resSpanTwoStepRp2.textContent = rp.toFixed(3);
 }
+
 
 // 8) Створити можливість очищення введених даних
 function onRemoveInputsDataClick() {
