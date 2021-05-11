@@ -110,6 +110,7 @@ function onCalcBtnOneStepClick() {
     console.log("Gi =", gi, "Gk =", gk, "Gp =", gp, "Gs =", gs) 
     console.log(message)
 
+    // 9) Заміна текстового контенту на пораховані значення змінних і приведення до необхідного формату
     resSpanOneStepGi.textContent = gi.toFixed(2);
     resSpanOneStepCv.textContent = cv.toFixed(2);
     resSpanOneStepGp.textContent = gp.toFixed(2);
@@ -167,6 +168,7 @@ function onCalcBtnTwoStepClick() {
     console.log("Gi2 =", gi2, "Gk2 =", gk2, "Gp2 =", gp2, "Gs2 =", gs2)
     console.log(message1)
 
+    // 9) Заміна текстового контенту на пораховані значення змінних і приведення до необхідного формату
     resSpanTwoStepGi.textContent = gi1.toFixed(2);
     resSpanTwoStepCv.textContent = cv1.toFixed(2);
     resSpanTwoStepGp.textContent = gp1.toFixed(2);
@@ -187,8 +189,7 @@ function onCalcBtnTwoStepClick() {
     resSpanTwoStepRp2.textContent = rp.toFixed(3);
 }
 
-
-// 8) Створити можливість очищення введених даних
+// 10) Створити можливість очищення введених даних
 function onRemoveInputsDataClick() {
   inputCi.value = ''; // 1500
   inputGv.value = ''; // 1
@@ -197,8 +198,3 @@ function onRemoveInputsDataClick() {
   inputXr.value = ''; // 0.2
   inputXr2.value = ''; // 0.25
 }
-
-// 9) Отримати доступ до значень спанів для заміни текстового контенту на пораховані значення змінних
-
-
-
