@@ -53,8 +53,12 @@ const resSpanTwoStepCv2 = document.querySelector('#cv2-2');
 const resSpanTwoStepLp2 = document.querySelector('#lp2');
 const resSpanTwoStepRp2 = document.querySelector('#rp2');
 
+// Оцінювання лівої і правої частини рівнянь
+const leftAndRightPartsEvaluation = document.querySelectorAll('.evaluation');
+const firstEvaluation = leftAndRightPartsEvaluation[0];
+const secondEvaluation = leftAndRightPartsEvaluation[1];
 
-// 7) Оформити секції розрахунків і присвоєння значень відповідним змінним
+// 7) Створити функції для розрахунку мембрани, розділювача і змішувачів
 const membr = (gv, cv, xz, xp) => {
     let gp = xp * gv
     let gk = gv - gp
@@ -81,7 +85,8 @@ const membr = (gv, cv, xz, xp) => {
     return [gr, ck]
   }
 
-
+  // 8) Оформити секції розрахунків і присвоєння значень відповідним змінним
+  // 1 ступінь
 function onCalcBtnOneStepClick() {
     const ci = Number(inputCi.value); // 1500
     const gv = Number(inputGv.value); // 1
@@ -115,11 +120,17 @@ function onCalcBtnOneStepClick() {
     resSpanOneStepGs.textContent = gs.toFixed(2);
     resSpanOneStepLp.textContent = lp.toFixed(3);
     resSpanOneStepRp.textContent = rp.toFixed(3);
-}
 
-function onCalcBtnTwoStepClick() {
-    
+    if ((lp - rp) === 0) {
+      firstEvaluation.textContent = '=';
+    } else if((lp-rp) > 0) {
+      firstEvaluation.textContent = '>';
+    } else {
+      firstEvaluation.textContent = '<'; }
+  }
+
 // 2 ступінь
+function onCalcBtnTwoStepClick() {
     const ci = Number(inputCi.value); // 1500
     const gv = Number(inputGv.value); // 1
     const xz = Number(inputXz.value); // 0.99
@@ -141,6 +152,13 @@ function onCalcBtnTwoStepClick() {
     let lp = gi1 * ci
     let rp = gs1 * ck1 + gs2 * ck2 + gp2 * cp2
     let message1 = Math.round(lp - rp) === 0 ? "LP = RP" : "Something is wrong"
+    
+    if ((lp - rp) === 0) {
+      secondEvaluation.textContent = "=";
+    } else if((lp-rp) > 0) {
+      secondEvaluation.textContent = ">";
+    } else {
+      secondEvaluation.textContent = "<"; }
 
 
     console.log("Cv1 =", cv1, "\nCp1 =", cp1, "\nCk1 =", ck1)
@@ -172,7 +190,12 @@ function onCalcBtnTwoStepClick() {
 
 // 8) Створити можливість очищення введених даних
 function onRemoveInputsDataClick() {
-    
+  inputCi.value = ''; // 1500
+  inputGv.value = ''; // 1
+  inputXz.value = ''; // 0.99
+  inputXp.value = ''; // 0.2
+  inputXr.value = ''; // 0.2
+  inputXr2.value = ''; // 0.25
 }
 
 // 9) Отримати доступ до значень спанів для заміни текстового контенту на пораховані значення змінних
