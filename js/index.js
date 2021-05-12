@@ -55,6 +55,7 @@ const resSpanTwoStepRp2 = document.querySelector('#rp2');
 
 // Оцінювання лівої і правої частини рівнянь
 const leftAndRightPartsEvaluation = document.querySelectorAll('.evaluation');
+console.log(leftAndRightPartsEvaluation)
 const firstEvaluation = leftAndRightPartsEvaluation[0];
 const secondEvaluation = leftAndRightPartsEvaluation[1];
 
